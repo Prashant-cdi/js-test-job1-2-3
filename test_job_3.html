@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 1px solid blue;
+        }
+        .box,.answer p{
+            text-align: center;
+        }
+        .inputs{
+            margin: 10px 0;
+        }
+        #submit-button{
+            color: white;
+            background-color: #0051ff96;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        #demo{
+            font-size: 20px;
+            color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    
+            <div class="inputs">
+                <label for="date1">Choose date 1</label>
+                <input type="date" name="date1" id="date1">
+                
+            </div>
+            
+            <div class="inputs">
+                <label for="date2">Choose date 2</label>    
+                <input type="date" name="date2" id="date2">
+            </div>
+            
+            <div class="inputs">
+                
+                <button type="button" id="submit-button" onclick="calculate();">Calculate Difference</button>
+            </div>
+
+        
+        <div class="answer">
+            <p id="demo"></p>
+        </div>
+    </div>
+
+<script>
+        function calculate(){
+
+            var date1 = document.getElementById("date1").value;
+            var date2 = document.getElementById("date2").value;
+
+            if(date1==""){
+                alert("Please enter date 1");
+            }
+
+            else if(date2 =="" ){
+                alert("Please enter date 2");
+            }
+
+            else{
+
+                console.log("we are here");
+
+                var date1_year = Number(date1.slice(0,4));
+                var date2_year = Number(date2.slice(0,4));
+
+                var date1_month = Number(date1.slice(5,7));
+                var date2_month = Number(date2.slice(5,7));
+                   
+                var date1_date = Number(date1.slice(8,10));
+                var date2_date = Number(date2.slice(8,10));
+                  
+                var year,month,date;
+                
+                if(date1_year == date2_year) {
+                    
+                    if(date1_month == date2_month) {
+                        
+                        if(date1_date == date2_date)
+                        date = 0;
+
+                        else if(date1_date < date2_date) {
+                            date = date2_date - date1_date;
+                        }
+                        else{
+                            date = date1_date - date2_date;
+                        }
+                    }
+
+                    else if(date1_month > date2_month) {
+                        month = date1_month - date2_month;
+                        if(date1_date == date2_date)
+                        date = 0;
+
+                        else if(date1_date < date2_date) {
+                            month--;
+                            date = date1_date - date2_date + 30;
+                        }
+                        else{
+                            date = date1_date - date2_date;
+                        }
+                    }
+
+                    else{
+
+                        month = date2_month - date1_month;
+
+                        if(date1_date == date2_date)
+                            date = 0;
+
+                        else if(date1_date < date2_date) {
+                            date = date2_date - date1_date;
+                        }
+                        else{
+                            month--;
+                            date = date2_date - date1_date + 30;
+                        }
+                    }
+                }
+
+                else if(date1_year > date2_year){
+
+                    year = date1_year - date2_year;
+
+                    if(date1_month == date2_month) {
+                        
+                        if(date1_date == date2_date)
+                        date = 0;
+
+                        else if(date1_date < date2_date) {
+                            date = date2_date - date1_date;
+                        }
+                        else{
+                            date = date1_date - date2_date;
+                        }
+                    }
+
+                    else if(date1_month > date2_month) {
+                        month = date1_month - date2_month;
+                        if(date1_date == date2_date)
+                        date = 0;
+
+                        else if(date1_date < date2_date) {
+                            month--;
+                            date = date1_date - date2_date + 30;
+                        }
+                        else{
+                            date = date1_date - date2_date;
+                        }
+                    }
+
+                    else{
+                        year--;
+
+                        month = date1_month - date2_month + 12;
+
+                        if(date1_date == date2_date)
+                            date = 0;
+
+                        else if(date1_date < date2_date) {
+                            date = date2_date - date1_date;
+                        }
+                        else{
+                            // month--;
+                            // date = date2_date - date1_date + 30;
+                            date = date1_date - date2_date; 
+                        }
+                    }
+                }
+
+                else{ 
+                    year = date2_year - date1_year;
+
+                    if(date1_month == date2_month) {
+                        
+                        if(date1_date == date2_date)
+                        date = 0;
+
+                        else if(date1_date < date2_date) {
+                            date = date2_date - date1_date;
+                        }
+                        else{
+                            date = date1_date - date2_date;
+                        }
+                    }
+
+                    else if(date1_month > date2_month) {
+                        month = date1_month - date2_month;
+                        if(date1_date == date2_date)
+                        date = 0;
+
+                        else if(date1_date < date2_date) {
+                            month--;
+                            date = date1_date - date2_date + 30;
+                        }
+                        else{
+                            date = date1_date - date2_date;
+                        }
+                    }
+
+                    else{
+
+                        month = date2_month - date1_month;
+
+                        if(date1_date == date2_date)
+                            date = 0;
+
+                        else if(date1_date < date2_date) {
+                            date = date2_date - date1_date;
+                        }
+                        else{
+                            month--;
+                            date = date2_date - date1_date + 30;
+                        }
+                    }
+
+                }
+
+
+                
+                var str="";
+                if(year>0)
+                str = str + year + "years, ";
+                if(month>0)
+                str = str +" "+ month + "months, ";
+                str = str + date + " days. "
+                console.log(str);
+                
+                document.getElementById("demo").innerHTML= str;
+                
+            }
+            
+
+        }
+    </script>
+
+</html>
+
+</body>
